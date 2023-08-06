@@ -14,7 +14,7 @@ function ListingItem({ listing, id, onDelete }) {
         <>
             <li className='categoryListing'>
                 <Link to={`/category/${listing.type}/${id}>`} className='categoryListingLink'>
-                    <img src={listing.imageUrls[0]} alt={listing.name}
+                    <img src={listing.imgUrls[0]} alt={listing.name}
                         className='categoryListingImg' />
 
                     <div className="categoryListingDetails">
@@ -24,16 +24,19 @@ function ListingItem({ listing, id, onDelete }) {
                         <p className='categoryListingName'> {listing.name} </p>
 
                         <p className="categoryListingPrice">
-                            ${listing.offer ? listing.discountedPrice
+                            $ {listing.offer ? listing.discountedPrice
                                 .toString()
                                 .replace(/\B(?=(\d{3})+(?!\d))/g, ',')
-                                : listing.regualarPrice
+                                : listing.regularPrice
                                     .toString()
                                     .replace(/\B(?=(\d{3})+(?!\d))/g, ',')
                             }
-                            {listing.type === 'rent' && ' / Month'}
 
+                            {listing.type === 'rent' && ' / Month'}
                         </p>
+
+
+
                         <div className='categoryListingInfoDiv'>
                             <img src={bedIcon} alt="bed" />
                             <p className="categoryListingInfoText">
